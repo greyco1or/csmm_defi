@@ -19,5 +19,13 @@ contract Exchange {
         //exchangeContract에서 호출하는 것이니까 주체가 다르다.
         token.transferFrom(msg.sender, address(this), _tokenAmount);
     }
+
+    function ethToTokenSwap() public payable {
+        uint256 inputAmount = msg.value;
+        // calculate amount out (zero fee)
+        uint256 outputAmount = inputAmount;
+        //transfer token out
+        token.transfer(msg.sender, outputAmount);
+    }
 }
 
